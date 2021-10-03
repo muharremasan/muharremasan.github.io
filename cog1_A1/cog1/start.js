@@ -34,6 +34,8 @@
 	  ]
 	});
   
+    app.use("/static", express.static('./static/'));
+
 	// Load the framework with the re-configured parameters.
 	require(["app"], function (app) {
 	  app.load();
