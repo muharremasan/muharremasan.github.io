@@ -65,7 +65,7 @@ define(["exports", "data"], function(exports, data) {
 			[5,6,8],
 			[4,7,8]
 		];	
-		instance.polygonColors = [2,8,2,8,2,8,2,8,2,8,2,8,2,8,2,8];
+		instance.polygonColors = [2,8,2,8,2,8,2,8,2,8,2,8];
 		
 
 		if( ! sixFacesTexture){
