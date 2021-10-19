@@ -20,7 +20,7 @@ define(["exports", "data"], function(exports, data) {
 		}
 		// Set default values if parameter is undefined.
 		if(scale == undefined){
-			scale = 2000;
+			scale = 200;
 		}
 
 		// Instance of the model to be returned.
@@ -37,7 +37,7 @@ define(["exports", "data"], function(exports, data) {
 			[ 1,1, 1],
 			[ 1,1,-1],
 			[-1,1,-1],
-			[0,+1,0]
+			[0,0,0]
 		];
 		instance.polygonVertices = [
 			[3,2,1,0],
