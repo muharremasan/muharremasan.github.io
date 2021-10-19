@@ -37,7 +37,7 @@ define(["exports", "data"], function(exports, data) {
 			[ 1,1, 1],
 			[ 1,1,-1],
 			[-1,1,-1],
-			[0,2,0]
+			[0,+1,0]
 		];
 		instance.polygonVertices = [
 			[3,2,1,0],
