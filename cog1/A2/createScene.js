@@ -22,7 +22,7 @@ function(exports, scenegraph, animation) {
 
 		// BEGIN exercise myModel
 		
-		var myModel = scenegraph.createNodeWithModel("myModel", "myModel", {scale:3000});
+		var myModel = scenegraph.createNodeWithModel("myModel", "myModel", {scale:30000});
 		myModel.rotateTo([1.6, -3.87, 0]);
 
 		// END exercise myModel
