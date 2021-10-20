@@ -66,10 +66,6 @@
 
 		instance.polygonColors = [2,8,2,8,2,8,2,8,2,8,2,8];
 
-		instance.textureURL = textureURL;
-
-		data.applyScale.call(instance, scale);
-
 		return instance;		
 	};
 });
