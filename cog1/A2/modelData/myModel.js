@@ -28,13 +28,13 @@ define(["exports", "data"], function(exports, data) {
 
 		instance.vertices = [
 			// bottom (y=-1)
-			[1,1, 1],
-			[1,2, 1],
+			[1,1,1],
+			[1,2,1],
 			[2,1,1],
 			[2,2,1],
 			
-			[1,1, 2],
-			[1,2, 2],
+			[1,1,2],
+			[1,2,2],
 			[2,1,2],
 			[2,2,2]
 
@@ -45,7 +45,7 @@ define(["exports", "data"], function(exports, data) {
 			[0,1,4,5],
 			[2,3,6,7],
             [2,6,7,3],
-			[0,4,2,6]
+			[0,4,6,1]
 		];	
 		instance.polygonColors = [2,8,2,8,2,8];
 
