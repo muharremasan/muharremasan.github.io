@@ -28,10 +28,10 @@ define(["exports", "data"], function(exports, data) {
 
 		instance.vertices = [
 			// bottom (y=-1)
-			[-1,-1, 1],
-			[ 1,-1, 1],
-			[ 1,-1,-1],
-			[-1,-1,-1],
+			[0.2,-0.2, 0.2],
+			[ 0.2,-0.2, 0.2],
+			[ 0.2,-0.2,-0.2],
+			[-0.2,-0.2,-0.2],
 			// top (y=+1)		
 			[-1,1, 1],
 			[ 1,1, 1],
@@ -40,19 +40,9 @@ define(["exports", "data"], function(exports, data) {
 			[0,0,0]
 		];
 		instance.polygonVertices = [
-			[3,2,1,0],
-			[4,5,6,7],
-			[4,0,1,5],
-			[1,2,6,5],
-			[6,2,3,7],
-			[3,0,4,7],
-
-			[7,6,8],
-			[4,5,8],
-			[5,6,8],
-			[4,7,8]
+			[3,2,1,0]
 		];	
-		instance.polygonColors = [2,8,2,8,2,8,2,8,2,8];
+		instance.polygonColors = [2];
 
 		return instance;		
 	};
