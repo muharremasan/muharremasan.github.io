@@ -43,9 +43,11 @@ define(["exports", "data"], function(exports, data) {
 			[1,2,3,4],
 			[5,6,7,8],
 			[1,2,5,6],
-			[3,4,7,8]
+			[3,4,7,8],
+            [3,7,8,4],
+			[1,5,3,7]
 		];	
-		instance.polygonColors = [2,8,2,8];
+		instance.polygonColors = [2,8,2,8,2,8];
 
 		return instance;		
 	};
