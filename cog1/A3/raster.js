@@ -145,8 +145,8 @@ function(exports, shader, framebuffer, data) {
 		var e2 = e1 << 1;
 
         if (e2 > -dYAbs) { 
-          e1 -= dYAbs;
-          startX += dXSign;
+          e1 = e1 - dYAbs;
+          startX = startX + dXSign;
 
           if (storeIntersectionForScanlineFill) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
@@ -155,13 +155,14 @@ function(exports, shader, framebuffer, data) {
 
         
         if (e2 < dXAbs) {
-          e1 += dXAbs;
-          startY += dYSign;
+          e1 = e1 + dXAbs;
+          startY = startY + dYSign;
 
           if (storeIntersectionForScanlineFill) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
           }
          }
+		drawLineBresenham(startX, startY, startZ, endX, endY, endZ, color, storeIntersectionForScanlineFill, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord)
 		}
        
 
