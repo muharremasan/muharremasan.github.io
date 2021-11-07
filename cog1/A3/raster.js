@@ -135,6 +135,8 @@ function(exports, shader, framebuffer, data) {
 			storeIntersectionForScanlineFill = false;
 		  }
 
+		var e1 = dXAbs - dYAbs;
+
 		while(true) {
 		framebuffer.set(startX, startY, getZ(startX, startY), color);
 
