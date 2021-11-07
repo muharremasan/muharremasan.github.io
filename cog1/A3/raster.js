@@ -129,22 +129,17 @@ function(exports, shader, framebuffer, data) {
 
 		// BEGIN exercise Bresenham
         
-		if (startX === endX & startY === endY) return;
 
-		if (startY === endY) {
-			storeIntersectionForScanlineFill = false;
-		  }
         
-		var e1 = dXAbs - dYAbs;
+		var e1 = dXAbs - 2*dYAbs;
 
 		while(true) {
 		framebuffer.set(startX, startY, getZ(startX, startY), color);
 
 		if (startX === endX && startY === endY) break;
 
-		var e2 = e1 << 1;
 
-        if (e2 > -dYAbs) { 
+        if (e1 > -dYAbs) { 
           e1 = e1 - dYAbs;
           startX = startX + dXSign;
 
@@ -154,7 +149,7 @@ function(exports, shader, framebuffer, data) {
         }
 
         
-        if (e2 < dXAbs) {
+        if (e1 < dXAbs) {
           e1 = e1 + dXAbs;
           startY = startY + dYSign;
 
