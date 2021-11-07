@@ -17,7 +17,8 @@ function(exports, scenegraph, animation) {
 	 */
 	function init() {
 
-		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:100, textureURL:"brickWall.jpg"});		
+		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
+		cubeNode.rotateTo([1.6, -3.87, 0]);
 
 		// BEGIN exercise myModel
 		
@@ -28,13 +29,13 @@ function(exports, scenegraph, animation) {
 		
 		return;
 
-		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:100, textureURL:"brickWall.jpg"});		
+		//var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:100, textureURL:"brickWall.jpg"});		
 		var cubeNode1 = scenegraph.createNodeWithModel("cube 1", "cube", {scale:70, textureURL:"stoneWall.jpg"});
 		cubeNode1.translate([50,200,0]);
-		cubeNode1.rotate([1,1,1]);
+		//cubeNode1.rotate([1,1,1]);
 		var cubeNode2 = scenegraph.createNodeWithModel("cube 2", "cube", {scale:50, textureURL:"uvTest.jpg"});
 		cubeNode2.translate([-100,-400,0]);
-		cubeNode2.rotate([-1,-1,-1]);
+		//cubeNode2.rotate([-1,-1,-1]);
 		var cubeNode3 = scenegraph.createNodeWithModel("cube procedural texture", "cube", {scale:50, textureURL:"sampleProceduralRGB"});
 		var cubeNode4 = scenegraph.createNodeWithModel("cube six faces texture", "cube", {scale:200, textureURL:"OrbitCube.gif", sixFacesTexture:true});
 		var cubeNode5 = scenegraph.createNodeWithModel("cube 3x3 texture", "cube", {scale:50, textureURL:"cubeColor.png", sixFacesTexture:true});
@@ -49,7 +50,7 @@ function(exports, scenegraph, animation) {
 
 		var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", {color:0, scale:40});
 		var dirtyTeapotNode = scenegraph.createNodeWithModel("dirtyTeapot", "teapot_dirty", {color:8});
-		teapotNode.rotate([1,1,1]);
+		//teapotNode.rotate([1,1,1]);
 		
 		var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", {color:8});
 		
