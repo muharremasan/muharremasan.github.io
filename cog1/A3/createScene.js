@@ -45,7 +45,7 @@ function(exports, scenegraph, animation) {
 		teapotNode.rotateTo([1.6, -3.87, 0]);
 
 		var torusNode = scenegraph.createNodeWithModel("torus", "torus", {scale:300});
-		diamondtorusNodeNode.rotateTo([1.6, -3.87, 0]);
+		torusNode.rotateTo([1.6, -3.87, 0]);
 
 		var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", {scale:300});
 		waltheadNode.rotateTo([1.6, -3.87, 0]);
