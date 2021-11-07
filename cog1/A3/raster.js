@@ -136,17 +136,18 @@ function(exports, shader, framebuffer, data) {
 		  }
         
 		var e1 = dXAbs - dYAbs;
-		var e2 = e1 << 1;
 
 		while(true) {
 		framebuffer.set(startX, startY, getZ(startX, startY), color);
 
 		if (startX === endX && startY === endY) break;
 
+		var e2 = e1 << 1;
+
         if (e2 > -dYAbs) { 
           e1 -= dYAbs;
           startX += dXSign;
-		  
+
           if (storeIntersectionForScanlineFill) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
           }
