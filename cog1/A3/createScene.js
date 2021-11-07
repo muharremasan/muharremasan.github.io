@@ -18,52 +18,6 @@ function(exports, scenegraph, animation) {
 	function init() {
 
 		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:100, textureURL:"brickWall.jpg"});		
-		
-		var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly");
-
-		var diamondNode = scenegraph.createNodeWithModel("diamond", "diamond");
-
-		var torusNode = scenegraph.createNodeWithModel("torus", "torus");
-
-		var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", {color:0, scale:40});
-		var dirtyTeapotNode = scenegraph.createNodeWithModel("dirtyTeapot", "teapot_dirty", {color:8});
-		teapotNode.rotate([1,1,1]);
-		
-		var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", {color:8});
-		
-		var plainNode1 = scenegraph.createNodeWithModel("plain", "plain", {scale:200, color:9, textureURL:"land_ocean_ice_2048.jpg"});		
-
-		var emptyNode1 = scenegraph.createNodeWithModel("empty", "empty");	
-
-		// var diamondNode = scenegraph.createNodeWithModel("diamond", "diamond", {scale:300});
-		// diamondNode.rotateTo([1.6, -3.87, 0]);
-
-		// var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly", {scale:300});
-		// insideOutPolyNode.rotateTo([1.6, -3.87, 0]);
-
-		// var myModelNode = scenegraph.createNodeWithModel("myModel", "myModel", {scale:300});
-		// myModelNode.rotateTo([1.6, -3.87, 0]);
-
-		// var plainNode = scenegraph.createNodeWithModel("plain", "plain", {scale:300});
-		// plainNode.rotateTo([1.6, -3.87, 0]);
-
-		// var sphereNode = scenegraph.createNodeWithModel("sphere", "sphere", {scale:300});
-		// sphereNode.rotateTo([1.6, -3.87, 0]);
-
-		// var starNode = scenegraph.createNodeWithModel("star", "star", {scale:300});
-		// starNode.rotateTo([1.6, -3.87, 0]);
-
-		// var teapot_dirtyNode = scenegraph.createNodeWithModel("teapot_dirty", "teapot_dirty", {scale:300});
-		// teapot_dirtyNode.rotateTo([1.6, -3.87, 0]);
-
-		// var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", {scale:300});
-		// teapotNode.rotateTo([1.6, -3.87, 0]);
-
-		// var torusNode = scenegraph.createNodeWithModel("torus", "torus", {scale:300});
-		// torusNode.rotateTo([1.6, -3.87, 0]);
-
-		// var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", {scale:300});
-		// waltheadNode.rotateTo([1.6, -3.87, 0]);
 
 		// BEGIN exercise myModel
 		
