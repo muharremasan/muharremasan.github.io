@@ -135,14 +135,16 @@ function(exports, shader, framebuffer, data) {
 			storeIntersectionForScanlineFill = false;
 		  }
         
-		var e1 = dXAbs - 2*dYAbs;
+		var e1 = dXAbs - dYAbs;
 
 		while(true) {
 		framebuffer.set(startX, startY, getZ(startX, startY), color);
 
 		if (startX === endX && startY === endY) break;
 
-		if (e1 < dXAbs) {
+        var e2 = 2 * e1
+
+		if (e2 < dXAbs) {
 			e1 = e1 + dXAbs;
 			startY = startY + dYSign;
   
@@ -151,7 +153,7 @@ function(exports, shader, framebuffer, data) {
 			}
 		   }
 
-        if (e1 > -dYAbs) { 
+        if (e2 > -dYAbs) { 
           e1 = e1 - dYAbs;
           startX = startX + dXSign;
 
