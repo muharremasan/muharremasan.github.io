@@ -134,28 +134,27 @@ function(exports, shader, framebuffer, data) {
 		if (startY === endY) {
 			storeIntersectionForScanlineFill = false;
 		  }
+        
+		var e1 = dXAbs - dYAbs;
+		var e2 = e1 << 1;
 
 		while(true) {
 		framebuffer.set(startX, startY, getZ(startX, startY), color);
 
 		if (startX === endX && startY === endY) break;
 
-		const e2 = err << 1;
-
-        // x-driving
-        if (e2 > -dYAbs) {
-          // Berechnung von err fuer x
-          err -= dYAbs;
+        if (e2 > -dYAbs) { 
+          e1 -= dYAbs;
           startX += dXSign;
+		  
           if (storeIntersectionForScanlineFill) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
           }
         }
 
-        // y-driving
+        
         if (e2 < dXAbs) {
-          // Berechnung von err fuer y
-          err += dXAbs;
+          e1 += dXAbs;
           startY += dYSign;
 
           if (storeIntersectionForScanlineFill) {
