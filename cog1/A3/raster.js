@@ -131,13 +131,17 @@ function(exports, shader, framebuffer, data) {
         
 		if (startX === endX & startY === endY) return;
 
+		if (startY === endY) {
+			storeIntersectionForScanlineFill = false;
+		  }
+
 		while(true) {
 		framebuffer.set(startX, startY, getZ(startX, startY), color);
 
 		if (startX === endX && startY === endY) break;
 
-		drawLineBresenham(startX, startY, startZ, endX, endY, endZ, color, storeIntersectionForScanlineFill, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
-		scanlineFillPolygon(vertices, polygon, color, textureCoord, polygonTextureCoord, texture);
+		drawLineBresenham(startX, startY, startZ, endX, endY, endZ, color);
+		scanlineFillPolygon(vertices, polygon, color);
 		}
        
 
