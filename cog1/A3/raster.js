@@ -142,20 +142,18 @@ function(exports, shader, framebuffer, data) {
 
 		if (startX === endX && startY === endY) break;
 
+		if (e1 < dXAbs) {
+			e1 = e1 + dXAbs;
+			startY = startY + dYSign;
+  
+			if (storeIntersectionForScanlineFill) {
+			  addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+			}
+		   }
 
         if (e1 > -dYAbs) { 
           e1 = e1 - dYAbs;
           startX = startX + dXSign;
-
-          if (storeIntersectionForScanlineFill) {
-            addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
-          }
-        }
-
-        
-        if (e1 < dXAbs) {
-          e1 = e1 + dXAbs;
-          startY = startY + dYSign;
 
           if (storeIntersectionForScanlineFill) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
