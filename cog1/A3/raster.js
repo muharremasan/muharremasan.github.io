@@ -117,7 +117,7 @@ function(exports, shader, framebuffer, data) {
 		var z = startZ;
 
 		// z is linearly interpolated with delta dz in each step of the driving variable.
-		var dz;
+		// var dz;
 
 		// Prepare bi-linear interpolation for shading and textureing.
 		// Interpolated weight in interval [0,1] of the starting- and end-point of the current edge.
