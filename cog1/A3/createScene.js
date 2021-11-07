@@ -28,23 +28,6 @@ function(exports, scenegraph, animation) {
 		var cubeNode4 = scenegraph.createNodeWithModel("cube six faces texture", "cube", {scale:200, textureURL:"OrbitCube.gif", sixFacesTexture:true});
 		var cubeNode5 = scenegraph.createNodeWithModel("cube 3x3 texture", "cube", {scale:50, textureURL:"cubeColor.png", sixFacesTexture:true});
 		var cubeNode6 = scenegraph.createNodeWithModel("cube Escher texture", "cube", {scale:200, textureURL:"EscherCubeFish.gif", sixFacesTexture:true});
-		
-		var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly");
-
-		var diamondNode = scenegraph.createNodeWithModel("diamond", "diamond");
-
-		var torusNode = scenegraph.createNodeWithModel("torus", "torus");
-		var torusNode1 = scenegraph.createNodeWithModel("torus 13", "torus", {r2:50,n2:13,color:8});
-
-		var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", {color:0, scale:40});
-		var dirtyTeapotNode = scenegraph.createNodeWithModel("dirtyTeapot", "teapot_dirty", {color:8});
-		teapotNode.rotate([1,1,1]);
-		
-		var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", {color:8});
-		
-		var plainNode1 = scenegraph.createNodeWithModel("plain", "plain", {scale:200, color:9, textureURL:"land_ocean_ice_2048.jpg"});		
-
-		var emptyNode1 = scenegraph.createNodeWithModel("empty", "empty");	
 
 		// var diamondNode = scenegraph.createNodeWithModel("diamond", "diamond", {scale:300});
 		// diamondNode.rotateTo([1.6, -3.87, 0]);
