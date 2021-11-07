@@ -140,8 +140,28 @@ function(exports, shader, framebuffer, data) {
 
 		if (startX === endX && startY === endY) break;
 
-		drawLineBresenham(startX, startY, startZ, endX, endY, endZ, color);
-		scanlineFillPolygon(vertices, polygon, color);
+		const e2 = err << 1;
+
+        // x-driving
+        if (e2 > -dYAbs) {
+          // Berechnung von err fuer x
+          err -= dYAbs;
+          startX += dXSign;
+          if (storeIntersectionForScanlineFill) {
+            addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+          }
+        }
+
+        // y-driving
+        if (e2 < dXAbs) {
+          // Berechnung von err fuer y
+          err += dXAbs;
+          startY += dYSign;
+
+          if (storeIntersectionForScanlineFill) {
+            addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+          }
+         }
 		}
        
 
