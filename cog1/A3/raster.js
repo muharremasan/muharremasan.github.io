@@ -162,7 +162,6 @@ function(exports, shader, framebuffer, data) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
           }
          }
-		 scanlineFillPolygon(vertices, polygon, color, textureCoord, polygonTextureCoord, texture);
 		}
        
 
