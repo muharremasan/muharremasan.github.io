@@ -128,9 +128,22 @@ function(exports, shader, framebuffer, data) {
 		var deltaInterpolationWeight;
 
 		// BEGIN exercise Bresenham
+        
+		if (startX === endX & startY === endY) return;
+
+		while(true) {
+		framebuffer.set(startX, startY, getZ(startX, startY), color);
+
+		if (startX === endX && startY === endY) break;
+
+		drawLineBresenham(startX, startY, startZ, endX, endY, endZ, color, storeIntersectionForScanlineFill, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+		scanlineFillPolygon(vertices, polygon, color, textureCoord, polygonTextureCoord, texture);
+		}
+       
+
 		// Comment out the next two lines.
-		drawLine(startX, startY, endX, endY, color);
-		return;
+		// drawLine(startX, startY, endX, endY, color);
+		// return;
 
 		// Skip it, if the line is just a point.
 

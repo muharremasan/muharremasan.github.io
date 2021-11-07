@@ -19,7 +19,6 @@ function(exports, scenegraph, animation) {
 
 		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
 		cubeNode.rotateTo([1.6, -3.87, 0]);
-		//cubeNode.scanlinefillpolygon();
 
 		// BEGIN exercise myModel
 		
@@ -62,7 +61,7 @@ function(exports, scenegraph, animation) {
 
         // BEGIN exercise Scenegraph		
 		
-		// Set parent-child relationships for scene-graph nodes.
+		// Set parent-child relationships for scene-graph nodes
 
         // END exercise Scenegraph		
         
