@@ -20,6 +20,36 @@ function(exports, scenegraph, animation) {
 		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
 		cubeNode.rotateTo([1.6, -3.87, 0]);
 
+		var diamondNode = scenegraph.createNodeWithModel("diamond", "diamond", {scale:300});
+		diamondNode.rotateTo([1.6, -3.87, 0]);
+
+		var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly", {scale:300});
+		insideOutPolyNode.rotateTo([1.6, -3.87, 0]);
+
+		var myModelNode = scenegraph.createNodeWithModel("myModel", "myModel", {scale:300});
+		myModelNode.rotateTo([1.6, -3.87, 0]);
+
+		var plainNode = scenegraph.createNodeWithModel("plain", "plain", {scale:300});
+		plainNode.rotateTo([1.6, -3.87, 0]);
+
+		var sphereNode = scenegraph.createNodeWithModel("sphere", "sphere", {scale:300});
+		sphereNode.rotateTo([1.6, -3.87, 0]);
+
+		var starNode = scenegraph.createNodeWithModel("star", "star", {scale:300});
+		starNode.rotateTo([1.6, -3.87, 0]);
+
+		var teapot_dirtyNode = scenegraph.createNodeWithModel("teapot_dirty", "teapot_dirty", {scale:300});
+		teapot_dirtyNode.rotateTo([1.6, -3.87, 0]);
+
+		var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", {scale:300});
+		teapotNode.rotateTo([1.6, -3.87, 0]);
+
+		var torusNode = scenegraph.createNodeWithModel("torus", "torus", {scale:300});
+		diamondtorusNodeNode.rotateTo([1.6, -3.87, 0]);
+
+		var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", {scale:300});
+		waltheadNode.rotateTo([1.6, -3.87, 0]);
+
 		// BEGIN exercise myModel
 		
 		//var myModel = scenegraph.createNodeWithModel("myModel", "myModel", {scale:1000});

@@ -117,7 +117,7 @@ function(exports, shader, framebuffer, data) {
 		var z = startZ;
 
 		// z is linearly interpolated with delta dz in each step of the driving variable.
-		// var dz;
+		var dz;
 
 		// Prepare bi-linear interpolation for shading and textureing.
 		// Interpolated weight in interval [0,1] of the starting- and end-point of the current edge.
@@ -129,88 +129,39 @@ function(exports, shader, framebuffer, data) {
 
 		// BEGIN exercise Bresenham
         
-      const point = [];
-      point.push(startX);
-      point.push(startY);
-      point.push(startZ);
-      
-      const dx = endX - startX;
-      const dy = endY - startY;
-      const dz = endZ - startZ;
-      
-      const x_inc = (dx < 0) ? -1 : 1;
-      const l = Math.abs(dx);
-      
-      const y_inc = (dy < 0) ? -1 : 1;
-      const m = Math.abs(dy);
-      
-      const z_inc = (dz < 0) ? -1 : 1;
-      const n = Math.abs(dz);
-      
-      const dx2 = l << 1;
-      const dy2 = m << 1;
-      const dz2 = n << 1;
-      
-      if ((l >= m) && (l >= n)) {
-        let err_1 = dy2 - l;
-        let err_2 = dz2 - l;
-        for (let i = 0; i < l; i++) {
-          framebuffer.set(point[0], point[1], point[2], color);
-          if (err_1 > 0) {
-            point[1] += y_inc;
-            err_1 -= dx2;
+		if (startX === endX & startY === endY) return;
+
+		if (startY === endY) {
+			storeIntersectionForScanlineFill = false;
+		  }
+        
+		var e1 = dXAbs - dYAbs;
+
+		while(true) {
+		framebuffer.set(startX, startY, getZ(startX, startY), color);
+
+		if (startX === endX && startY === endY) break;
+
+        var e2 = dXdYdiff2;
+
+		if (e2 < dXAbs) {
+			e1 = e1 + dXAbs;
+			startY = startY + dYSign;
+  
+			if (storeIntersectionForScanlineFill) {
+			  addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+			}
+		   }
+
+        if (e2 > -dYAbs) { 
+          e1 = e1 - dYAbs;
+          startX = startX + dXSign;
+
+          if (storeIntersectionForScanlineFill) {
+            addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
           }
-      
-          if (err_2 > 0) {
-            point[2] += z_inc;
-            err_2 -= dx2;
-          }
-      
-          err_1 += dy2;
-          err_2 += dz2;
-      
-          point[0] += x_inc;
-        }
-      } else if ((m >= l) && (m >= n)) {
-        let err_1 = dx2 - m;
-        let err_2 = dz2 - m;
-      
-        for (let i = 0; i < m; i++) {
-          framebuffer.set(point[0], point[1], point[2], color);
-          if (err_1 > 0) {
-            point[0] += x_inc;
-            err_1 -= dy2;
-          }
-      
-          if (err_2 > 0) {
-            point[2] += z_inc;
-            err_2 -= dy2;
-          }
-      
-          err_1 += dx2;
-          err_2 += dz2;
-      
-          point[1] += y_inc;
-        }
-      } else {
-        let err_1 = dy2 - n;
-        let err_2 = dx2 - n;
-        for (let i = 0; i < n; i++) {
-          framebuffer.set(point[0], point[1], point[2], color);
-          if (err_1 > 0) {
-            point[1] += y_inc;
-            err_1 -= dz2;
-          }
-          if (err_2 > 0) {
-            point[0] += x_inc;
-            err_2 -= dz2;
-          }
-          err_1 += dy2;
-          err_2 += dx2;
-          point[2] += z_inc;
-        }
-      }
-      framebuffer.set(point[0], point[1], point[2], color);
+         }
+		}
        
 
 		// Comment out the next two lines.
