@@ -129,7 +129,11 @@ function(exports, shader, framebuffer, data) {
 
 		// BEGIN exercise Bresenham
         
+		if (startX === endX & startY === endY) return;
 
+		if (startY === endY) {
+			storeIntersectionForScanlineFill = false;
+		  }
         
 		var e1 = dXAbs - 2*dYAbs;
 
