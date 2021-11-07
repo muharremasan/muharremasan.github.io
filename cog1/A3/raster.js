@@ -162,7 +162,7 @@ function(exports, shader, framebuffer, data) {
             addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
           }
          }
-		drawLineBresenham(startX, startY, startZ, endX, endY, endZ, color, storeIntersectionForScanlineFill, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord)
+		 scanlineFillPolygon(vertices, polygon, color, textureCoord, polygonTextureCoord, texture);
 		}
        
 
