@@ -142,7 +142,7 @@ function(exports, shader, framebuffer, data) {
 
 		if (startX === endX && startY === endY) break;
 
-        var e2 = 2 * e1
+        var e2 = dXAbs - 2 * dYAbs;
 
 		if (e2 < dXAbs) {
 			e1 = e1 + dXAbs;
