@@ -142,9 +142,9 @@ function(exports, shader, framebuffer, data) {
 
 		if (startX === endX && startY === endY) break;
 
-		var e2 = 2 * e1;
+		
 
-		if (e2 < dXAbs) {
+		if (dXdYdiff2 < dXAbs) {
 			e1 = e1 + dXAbs;
 			startY = startY + dYSign;
   
@@ -153,7 +153,7 @@ function(exports, shader, framebuffer, data) {
 			}
 		   }
 
-        if (e2 > -dYAbs) { 
+        if (dXdYdiff2 > -dYAbs) { 
           e1 = e1 - dYAbs;
           startX = startX + dXSign;
 
