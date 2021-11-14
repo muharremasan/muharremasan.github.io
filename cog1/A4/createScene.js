@@ -17,7 +17,7 @@ function(exports, scenegraph, animation) {
 	 */
 	function init() {
 
-		var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly");
+		var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly", {scale:300});
 		insideOutPolyNode.rotateTo([1.6, -3.87, 0]);
 
 		// var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
