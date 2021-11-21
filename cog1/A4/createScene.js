@@ -17,8 +17,8 @@ function(exports, scenegraph, animation) {
 	 */
 	function init() {
 
-		var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly");
-		insideOutPolyNode.rotateTo([-0.15, -3.11, 0]);
+		// var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly");
+		// insideOutPolyNode.rotateTo([-0.15, -3.11, 0]);
 
 		// var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
 		// cubeNode.rotateTo([1.6, -3.87, 0]);
@@ -30,7 +30,7 @@ function(exports, scenegraph, animation) {
 
 		// END exercise myModel
 		
-		return;
+		// return;
 
 		//var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:100, textureURL:"brickWall.jpg"});		
 		var cubeNode1 = scenegraph.createNodeWithModel("cube 1", "cube", {scale:70, textureURL:"stoneWall.jpg"});
@@ -93,7 +93,7 @@ function(exports, scenegraph, animation) {
         cubeNode4.setVisible(false);
         cubeNode5.setVisible(false);
         cubeNode6.setVisible(false);
-        insideOutPolyNode.setVisible(false);
+        insideOutPolyNode.setVisible(true);
         diamondNode.setVisible(false);
         torusNode.setVisible(false);
         torusNode1.setVisible(false);
