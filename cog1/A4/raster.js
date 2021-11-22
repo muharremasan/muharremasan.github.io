@@ -128,40 +128,83 @@ function(exports, shader, framebuffer, data) {
 		var deltaInterpolationWeight;
 
 		// BEGIN exercise Bresenham
-        
-		if (startX === endX & startY === endY) return;
-
-		if (startY === endY) {
-			storeIntersectionForScanlineFill = false;
+		if (startX === endX && startY === endY) {
+			framebuffer.set(startX, startY, startZ, color);
+			return;
 		  }
-
-		var e1 = dXAbs - dYAbs;
-
-		while(true) {
-		framebuffer.set(startX, startY, getZ(startX, startY), color);
-
-		if (startX === endX && startY === endY) break;
-
-		var e2 = 2 * e1;
-
-		if (e2 < dXAbs) {
-			e1 = e1 + dXAbs;
-			startY = startY + dYSign;
-  
-			if (storeIntersectionForScanlineFill) {
-			  addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+	
+		  framebuffer.set(x, y, getZ(x, y), color);
+	
+		  if (dXAbs >= dYAbs) {
+			let previousY = y - dYSign;
+			e = dXAbs - dYAbs2;
+			while (x !== endX) {
+			  x += dXSign;
+			  if (e > 0) {
+				e = e - dYAbs2;
+			  } else {
+				y += dYSign;
+				e += dXdYdiff2;
+			  }
+			  if (startY !== endY && x !== endX && y !== previousY && y !== startY && y !== endY) {
+				addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+			  }
+			  framebuffer.set(x, y, getZ(x, y), color);
+			  previousY = y;
 			}
-		   }
+		  } else {
+			e = dYAbs - dXAbs2;
+			while (y !== endY) {
+			  y += dYSign;
+			  if (e > 0) {
+				e = e - dXAbs2;
+			  } else {
+				x += dXSign;
+				e += dYdXdiff2;
+			  }
+	
+			  framebuffer.set(x, y, getZ(x, y), color);
+	
+			  if (y !== endY) {
+				addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+			  }
+			}
+		  }
+		}     
+		// if (startX === endX & startY === endY) 
+		// return;
 
-        if (e2 > -dYAbs) { 
-          e1 = e1 - dYAbs;
-          startX = startX + dXSign;
+		// if (startY === endY) {
+		// 	storeIntersectionForScanlineFill = false;
+		//   }
 
-          if (storeIntersectionForScanlineFill) {
-            addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
-          }
-         }
-		}
+		// var e1 = dXAbs - dYAbs;
+
+		// while(true) {
+		// framebuffer.set(startX, startY, getZ(startX, startY), color);
+
+		// if (startX === endX && startY === endY) break;
+
+		// var e2 = 2 * e1;
+
+		// if (e2 < dXAbs) {
+		// 	e1 = e1 + dXAbs;
+		// 	startY = startY + dYSign;
+  
+		// 	if (storeIntersectionForScanlineFill) {
+		// 	  addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+		// 	}
+		//    }
+
+        // if (e2 > -dYAbs) { 
+        //   e1 = e1 - dYAbs;
+        //   startX = startX + dXSign;
+
+        //   if (storeIntersectionForScanlineFill) {
+        //     addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+        //   }
+        //  }
+		// }
        
 
 		// Comment out the next two lines.
@@ -194,7 +237,6 @@ function(exports, shader, framebuffer, data) {
 						//framebuffer.set(x, y, getZ(x, y), color);
 		
 		// END exercise Bresenham		
-	};
 
 	/**
 	 * Draw edges of given polygon. See also scanlineFillPolygon().
