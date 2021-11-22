@@ -243,7 +243,7 @@ function(exports, shader, framebuffer, data) {
 		}
 
 		// Sign ()+-1) of derivative of edge.
-		var derivative = undefined;
+		var currderivative = undefined;
 		var lastDerivative = undefined;
 
 		// BEGIN exercise Texture
