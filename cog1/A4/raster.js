@@ -278,7 +278,7 @@ function(exports, shader, framebuffer, data) {
         currZ = startPoint[2];
         nextX = Math.floor(endPoint[0]);
         nextY = Math.floor(endPoint[1]);
-        nextZ = end[2];
+        nextZ = endPoint[2];
 
         drawLineBresenham(currX, currY, currZ, nextX, nextY, nextZ, color, true);
 
