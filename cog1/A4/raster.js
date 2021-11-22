@@ -136,7 +136,7 @@ function(exports, shader, framebuffer, data) {
 		  framebuffer.set(x, y, getZ(x, y), color);
 	
 		  if (dXAbs >= dYAbs) {
-			let previousY = y - dYSign;
+			var y1 = y - dYSign;
 			e = dXAbs - dYAbs2;
 			while (x !== endX) {
 			  x += dXSign;
@@ -146,11 +146,11 @@ function(exports, shader, framebuffer, data) {
 				y += dYSign;
 				e += dXdYdiff2;
 			  }
-			  if (startY !== endY && x !== endX && y !== previousY && y !== startY && y !== endY) {
+			  if (startY !== endY && x !== endX && y !== y1 && y !== startY && y !== endY) {
 				addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
 			  }
 			  framebuffer.set(x, y, getZ(x, y), color);
-			  previousY = y;
+			  y1 = y;
 			}
 		  } else {
 			e = dYAbs - dXAbs2;
