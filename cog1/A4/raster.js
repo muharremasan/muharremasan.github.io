@@ -503,10 +503,12 @@ function(exports, shader, framebuffer, data) {
 			if ((y.length < 2) || (y.length % 2)) {
 			console.log("Error in number of intersection (" + y.length + ") in line: " + y);
 			}
-			if(scanlineIntersection[y] == undefined) {
-				scanlineIntersection[y] = [];
-			}
-			
+			// if(scanlineIntersection[y] == undefined) {
+			// 	scanlineIntersection[y] = [];
+			// }
+			if (!scanlineIntersection[y]) {
+				continue;
+			  }
             // if(horizontalClippingTest) {
 			// zTest = framebuffer.zBufferTest(x, y, z, color);}
 
