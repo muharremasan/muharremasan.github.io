@@ -288,10 +288,10 @@ function(exports, shader, framebuffer, data) {
           continue;
         }
 
-        if (currderivative !== 0) {
+        if (currderivative !== 0, storeIntersectionForScanlineFill) {
 			addIntersection(nextX, nextY, nextZ, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);;
 
-          if (currderivative + lastDerivative === 0) {
+          if (currderivative + lastDerivative === 0, storeIntersectionForScanlineFill) {
             addIntersection(currX, currY, currZ, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);;
           }
         }
