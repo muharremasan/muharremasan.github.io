@@ -500,8 +500,8 @@ function(exports, shader, framebuffer, data) {
 
 		// BEGIN exercise Scanline
 		for (var y = 0; y < height; y++) {
-			if ((line.length < 2) || (line.length % 2)) {
-			console.log("Error in number of intersection (" + line.length + ") in line: " + y);
+			if ((y.length < 2) || (y.length % 2)) {
+			console.log("Error in number of intersection (" + y.length + ") in line: " + y);
 			}
 			if(scanlineIntersection[y] == undefined) {
 				scanlineIntersection[y] = [];
