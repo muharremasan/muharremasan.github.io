@@ -295,7 +295,7 @@ function(exports, shader, framebuffer, data) {
             addIntersection(currX, currY, currZ);;
           }
         }
-        console.log("derivative:" + derivative + " lastDerivative " + lastDerivative);
+        console.log("currderivative:" + currderivative + " lastDerivative " + lastDerivative);
 		console.log("Add end point:" + nextX + ", " + nextY);
         lastDerivative = currderivative;
       }
