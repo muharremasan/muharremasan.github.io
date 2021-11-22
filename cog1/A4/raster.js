@@ -243,11 +243,63 @@ function(exports, shader, framebuffer, data) {
 		}
 
 		// Sign ()+-1) of derivative of edge.
-		var derivative = undefined;
-		var lastDerivative = undefined;
+		var derivative =! 0;
+		var lastDerivative =! 0;
 
 		// BEGIN exercise Texture
 		// BEGIN exercise Scanline
+		var Polygonlen = polygon.length -1;
+
+      while (!lastDerivative && Polygonlen > -1) {
+        startPoint = vertices[polygon[Polygonlen]];
+        var PolygonVert = 0;
+
+        if (Polygonlen < polygon.length - 1) {
+			PolygonVert = Polygonlen + 1;
+        }
+
+        endPoint = vertices[polygon[PolygonVert]];
+        lastDerivative = calcDerivative(currY, nextY);
+        PolygonCount - 1;
+      }
+
+      if (!lastDerivative) {
+        return;
+      }
+
+      for (var i = 0; v < polygon.length; i++) {
+        startPoint = vertices[polygon[i]];
+
+        var nextVertexIndex = v < polygon.length - 1 ? v + 1 : 0;
+        var end = vertices[polygon[nextVertexIndex]];
+
+        currX = Math.floor(startPoint[0]);
+        currY = Math.floor(startPoint[1]);
+        currZ = startPoint[2];
+        nextX = Math.floor(endPoint[0]);
+        nextY = Math.floor(endPoint[1]);
+        nextZ = end[2];
+
+        drawLineBresenham(currX, currY, currZ, nextX, nextY, nextZ, color, true);
+
+        currderivative = calcDerivative(currY, nextY);
+
+        if (currderivative === 0) {
+          continue;
+        }
+
+        if (currderivative !== 0) {
+			addIntersection(nextX, nextY, nextZ, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);;
+
+          if (currderivative + lastDerivative === 0) {
+            addIntersection(currX, currY, currZ, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);;
+          }
+        }
+        console.log("derivative:" + derivative + " lastDerivative " + lastDerivative);
+		console.log("Add end point:" + nextX + ", " + nextY);
+        lastDerivative = currderivative;
+      }
+
 
 		// For the start edge we need the last edge with derivative !=0,
 		// Pre-calculate the derivatives for last edge !=0 of polygon.
@@ -447,7 +499,36 @@ function(exports, shader, framebuffer, data) {
 		interpolationData.shaderStepOnScanline = shader.getInterpolationStepOnScanlineFunction();
 
 		// BEGIN exercise Scanline
+		for (var y = 0; y < height; y++) {
+			if ((line.length < 2) || (line.length % 2)) {
+			console.log("Error in number of intersection (" + line.length + ") in line: " + y);
+			}
+			if(scanlineIntersection[y] == undefined) {
+				scanlineIntersection[y] = [];
+			}
+			
+            if(horizontalClippingTest) {
+			zTest = framebuffer.zBufferTest(x, y, z, color);}
 
+			if(zTest && horizontalClippingTest) {
+			if(texture != null) {
+			    texture.sample(interpolationData.uvVec, color);
+			}
+		        }
+
+            shadingFunction(color, interpolationData.weightOnScanline);
+
+			scanlineIntersection[y].sort((a, b) => a.x - b.x);
+	
+			for (var i = 0; i < scanlineIntersection[y].length - 1; i += 2) {
+			  const x1 = scanlineIntersection[y][i];
+			  const x2 = scanlineIntersection[y][i + 1];
+	
+			  for (var x = x1.x; x <= x2.x; x++) {
+				framebuffer.set(x, y, getZ(x, y), color);
+			  }
+			}
+		  }
 		// Fill polygon line by line using the scanline algorithm.
 		// Loop over non empty scan lines.
 
