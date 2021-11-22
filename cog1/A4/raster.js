@@ -243,8 +243,8 @@ function(exports, shader, framebuffer, data) {
 		}
 
 		// Sign ()+-1) of derivative of edge.
-		var derivative =! 0;
-		var lastDerivative =! 0;
+		var derivative = undefined;
+		var lastDerivative = undefined;
 
 		// BEGIN exercise Texture
 		// BEGIN exercise Scanline
