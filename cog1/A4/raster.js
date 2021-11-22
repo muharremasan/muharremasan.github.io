@@ -507,17 +507,17 @@ function(exports, shader, framebuffer, data) {
 				scanlineIntersection[y] = [];
 			}
 			
-            if(horizontalClippingTest) {
-			zTest = framebuffer.zBufferTest(x, y, z, color);}
+            // if(horizontalClippingTest) {
+			// zTest = framebuffer.zBufferTest(x, y, z, color);}
 
-			if(zTest && horizontalClippingTest) {
-			if(texture != null) {
-			    texture.sample(interpolationData.uvVec, color);
-			}
-		        }
+			// if(zTest && horizontalClippingTest) {
+			// if(texture != null) {
+			//     texture.sample(interpolationData.uvVec, color);
+			// }
+		    //     }
 
-            shadingFunction(color, interpolationData.weightOnScanline);
-			interpolationStepOnScanline(texture);
+            // shadingFunction(color, interpolationData.weightOnScanline);
+			// interpolationStepOnScanline(texture);
 
 			scanlineIntersection[y].sort((a, b) => a.x - b.x);
 	
