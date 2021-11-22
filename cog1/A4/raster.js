@@ -288,11 +288,11 @@ function(exports, shader, framebuffer, data) {
           continue;
         }
 
-        if (currderivative !== 0, storeIntersectionForScanlineFill) {
-			addIntersection(nextX, nextY, nextZ, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);;
+        if (currderivative !== 0) {
+			addIntersection(nextX, nextY, nextZ);;
 
-          if (currderivative + lastDerivative === 0, storeIntersectionForScanlineFill) {
-            addIntersection(currX, currY, currZ, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);;
+          if (currderivative + lastDerivative === 0) {
+            addIntersection(currX, currY, currZ);;
           }
         }
         console.log("derivative:" + derivative + " lastDerivative " + lastDerivative);
