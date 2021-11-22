@@ -517,6 +517,7 @@ function(exports, shader, framebuffer, data) {
 		        }
 
             shadingFunction(color, interpolationData.weightOnScanline);
+			interpolationStepOnScanline(texture);
 
 			scanlineIntersection[y].sort((a, b) => a.x - b.x);
 	
@@ -583,7 +584,7 @@ function(exports, shader, framebuffer, data) {
 					// Step interpolation variables on current scanline.
 					// Even failing the z-buffer test we have to perform the interpolation step.
 					// Necessary for z-buffer, shading and texturing.
-					interpolationStepOnScanline(texture);
+					// interpolationStepOnScanline(texture);
 
 			// End of loop over x for one scanline segment between two intersections.
 			// End of loop over intersections on one scanline.
