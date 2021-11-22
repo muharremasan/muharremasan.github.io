@@ -259,7 +259,7 @@ function(exports, shader, framebuffer, data) {
         }
 
         endPoint = vertices[polygon[PolygonVert]];
-        lastDerivative = calcDerivative(currY, nextY);
+        lastDerivative = calcDerivative(startPoint[1], endPoint[1]);
         PolygonCount--;
       }
 
