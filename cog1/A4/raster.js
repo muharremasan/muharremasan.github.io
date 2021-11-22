@@ -271,7 +271,7 @@ function(exports, shader, framebuffer, data) {
         startPoint = vertices[polygon[v]];
 
         var nextVertexIndex = v < polygon.length - 1 ? v + 1 : 0;
-        var end = vertices[polygon[nextVertexIndex]];
+        var endPoint = vertices[polygon[nextVertexIndex]];
 
         currX = Math.floor(startPoint[0]);
         currY = Math.floor(startPoint[1]);
