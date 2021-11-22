@@ -267,8 +267,8 @@ function(exports, shader, framebuffer, data) {
         return;
       }
 
-      for (var v = 0; v < polygon.length; v++) {
-        startPoint = vertices[polygon[i]];
+      for (var v = 0; i < polygon.length; v++) {
+        startPoint = vertices[polygon[v]];
 
         var nextVertexIndex = v < polygon.length - 1 ? v + 1 : 0;
         var end = vertices[polygon[nextVertexIndex]];
