@@ -243,11 +243,11 @@ function(exports, shader, framebuffer, data) {
 		}
 
 		// Sign ()+-1) of derivative of edge.
-		var currderivative = undefined;
-		var lastDerivative = undefined;
 
 		// BEGIN exercise Texture
 		// BEGIN exercise Scanline
+		var currderivative = undefined;
+		var lastDerivative = undefined;
 		var Polygonlen = polygon.length -1;
 
       while (!lastDerivative && Polygonlen > -1) {
@@ -271,7 +271,7 @@ function(exports, shader, framebuffer, data) {
         startPoint = vertices[polygon[v]];
 
         var nextVertexIndex = v < polygon.length - 1 ? v + 1 : 0;
-        var endPoint = vertices[polygon[nextVertexIndex]];
+        endPoint = vertices[polygon[nextVertexIndex]];
 
         currX = Math.floor(startPoint[0]);
         currY = Math.floor(startPoint[1]);
@@ -503,23 +503,21 @@ function(exports, shader, framebuffer, data) {
 			if ((y.length < 2) || (y.length % 2)) {
 			console.log("Error in number of intersection (" + y.length + ") in line: " + y);
 			}
-			// if(scanlineIntersection[y] == undefined) {
-			// 	scanlineIntersection[y] = [];
-			// }
-			if (!scanlineIntersection[y]) {
-				continue;
-			  }
-            // if(horizontalClippingTest) {
-			// zTest = framebuffer.zBufferTest(x, y, z, color);}
+			if(scanlineIntersection[y] == undefined) {
+				scanlineIntersection[y] = [];
+			}
+			
+            if(horizontalClippingTest) {
+			zTest = framebuffer.zBufferTest(x, y, z, color);}
 
-			// if(zTest && horizontalClippingTest) {
-			// if(texture != null) {
-			//     texture.sample(interpolationData.uvVec, color);
-			// }
-		    //     }
+			if(zTest && horizontalClippingTest) {
+			if(texture != null) {
+			    texture.sample(interpolationData.uvVec, color);
+			}
+		        }
 
-            // shadingFunction(color, interpolationData.weightOnScanline);
-			// interpolationStepOnScanline(texture);
+            shadingFunction(color, interpolationData.weightOnScanline);
+			interpolationStepOnScanline(texture);
 
 			scanlineIntersection[y].sort((a, b) => a.x - b.x);
 	
