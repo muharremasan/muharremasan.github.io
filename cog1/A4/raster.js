@@ -171,42 +171,7 @@ function(exports, shader, framebuffer, data) {
 			}
 		  }
 		}     
-		// if (startX === endX & startY === endY) 
-		// return;
-
-		// if (startY === endY) {
-		// 	storeIntersectionForScanlineFill = false;
-		//   }
-
-		// var e1 = dXAbs - dYAbs;
-
-		// while(true) {
-		// framebuffer.set(startX, startY, getZ(startX, startY), color);
-
-		// if (startX === endX && startY === endY) break;
-
-		// var e2 = 2 * e1;
-
-		// if (e2 < dXAbs) {
-		// 	e1 = e1 + dXAbs;
-		// 	startY = startY + dYSign;
-  
-		// 	if (storeIntersectionForScanlineFill) {
-		// 	  addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
-		// 	}
-		//    }
-
-        // if (e2 > -dYAbs) { 
-        //   e1 = e1 - dYAbs;
-        //   startX = startX + dXSign;
-
-        //   if (storeIntersectionForScanlineFill) {
-        //     addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
-        //   }
-        //  }
-		// }
-       
-
+		
 		// Comment out the next two lines.
 		// drawLine(startX, startY, endX, endY, color);
 		// return;
