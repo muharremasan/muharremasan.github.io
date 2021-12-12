@@ -660,10 +660,10 @@ function(exports, shader, framebuffer, data) {
 
 		// // Check result, applying the plane equation to the original polygon vertices.
 		for(var i = 0; i < polygon.length; i++) {
-		    var p = polygon[i];
-		    var x = vertices[p[0]][0];
-		    var y = vertices[p[0]][1];
-		    var z = vertices[p[0]][2];
+		   
+		    var x = vertices[polygon[0]][0];
+		    var y = vertices[polygon[0]][1];
+		    var z = vertices[polygon[0]][2];
 		    var zCalc = getZ(x, y);
 
 			inverseC = 1 / C;
