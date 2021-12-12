@@ -652,14 +652,15 @@ function(exports, shader, framebuffer, data) {
 		    var y = vertices[p][1];
 		    var z = vertices[p][2];
 		    var zCalc = getZ(x, y);
-            calcPlaneEquation;
-			D = -(A * x + B * y + C * z);
+            
+			
 
 		if(Math.abs(z - zCalc) > 0.001) {
+			D = -(A * x + B * y + C * z);
 		    console.log("Check failed  z "+z+" = "+zCalc);
 		    console.log("Plane: A=" + A + " B=" + B + " C=" + C + " D=" + D);
 		 }
-		};
+		}
 
 		// END exercise Z-Buffer
 
