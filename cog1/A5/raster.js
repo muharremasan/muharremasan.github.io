@@ -255,37 +255,48 @@ function(exports, shader, framebuffer, data) {
 		// BEGIN exercise Scanline
 		var currderivative = undefined;
 		var lastDerivative = undefined;
-		var Polygonlen = polygon.length -1;
 
-      while (!lastDerivative && Polygonlen > -1) {
-        startPoint = vertices[polygon[Polygonlen]];
-        var PolygonVert = 0;
+		for (let i = polygon.length - 1; i > 0; i--) {
+			startPoint = polygon[i];
 
-        if (Polygonlen < polygon.length - 1) {
-			PolygonVert = Polygonlen + 1;
-        }
+			if (i < polygon.length - 1) {
+				endPoint = polygon[i + 1];
+			} else {
+				endPoint = polygon[0];
+			}
+			currY = Math.floor(vertices[startPoint][1]);
+			nextY = Math.floor(vertices[endPoint][1]);
 
-        endPoint = vertices[polygon[PolygonVert]];
-        lastDerivative = calcDerivative(startPoint[1], endPoint[1]);
-        Polygonlen--;
-      }
+			if ((currderivative = calcDerivative(currY, nextY)) !== 0) {
+				break;
+			}
+		}
 
-      if (!lastDerivative) {
-        return;
-      }
+		if (currderivative === 0) {
+			return;
+		}
 
-      for (var v = 0; v < polygon.length; v++) {
-        startPoint = vertices[polygon[v]];
+		lastIndex = polygon.length - 1;
 
-        var nextVertexIndex = v < polygon.length - 1 ? v + 1 : 0;
-        endPoint = vertices[polygon[nextVertexIndex]];
+		startPoint = polygon[i];
+		if (i < lastIndex) {
+			endPoint = polygon[i + 1];
+		} else {
+			endPoint = polygon[0];
+		}
+		currX = Math.floor(vertices[startPoint][0]);
+		currY = Math.floor(vertices[startPoint][1]);
+		currZ = vertices[startPoint][2];
 
-        currX = Math.floor(startPoint[0]);
-        currY = Math.floor(startPoint[1]);
-        currZ = startPoint[2];
-        nextX = Math.floor(endPoint[0]);
-        nextY = Math.floor(endPoint[1]);
-        nextZ = endPoint[2];
+		nextX = Math.floor(vertices[endPoint][0]);
+		nextY = Math.floor(vertices[endPoint][1]);
+		nextZ = vertices[endPoint][2];
+
+		var edgeStartVertexIndex = i;
+		var edgeEndVertexIndex = i < lastIndex ? i + 1 : 0;
+
+		var edgeStartTextureCoord = undefined;
+		var edgeEndTextureCoord = undefined;
 
         drawLineBresenham(currX, currY, currZ, nextX, nextY, nextZ, color, true);
         lastDerivative = currderivative;
