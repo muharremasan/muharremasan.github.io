@@ -20,8 +20,8 @@ function(exports, scenegraph, animation) {
 		// var insideOutPolyNode = scenegraph.createNodeWithModel("insideOutPoly", "insideOutPoly");
 		// insideOutPolyNode.rotateTo([-0.15, -3.11, 0]);
 
-		// var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
-		// cubeNode.rotateTo([1.6, -3.87, 0]);
+		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
+		cubeNode.rotateTo([1.6, -3.87, 0]);
 
 		// BEGIN exercise myModel
 		
@@ -87,7 +87,7 @@ function(exports, scenegraph, animation) {
 		// Set visibility of nodes (hide: set to false).
 		// Comment out what you want to see as the default is visible.
         // cubeNode.setVisible(false);
-        cubeNode1.setVisible(true);
+        cubeNode1.setVisible(false));
         cubeNode2.setVisible(false);
         cubeNode3.setVisible(false);
         cubeNode4.setVisible(false);
