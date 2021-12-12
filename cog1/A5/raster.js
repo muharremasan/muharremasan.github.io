@@ -652,10 +652,7 @@ function(exports, shader, framebuffer, data) {
 		    var y = vertices[p][1];
 		    var z = vertices[p][2];
 		    var zCalc = getZ(x, y);
-
-			inverseC = 1 / C;
-		    AdivC = A / C;
-
+            calcPlaneEquation;
 			D = -(A * x + B * y + C * z);
 
 		if(Math.abs(z - zCalc) > 0.001) {
