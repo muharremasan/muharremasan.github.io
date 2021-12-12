@@ -245,7 +245,7 @@ function(exports, shader, framebuffer, data) {
 		// Maybe skip polygons that are perpendicular to the screen / xy-plane.
 		// The plane calculation can be commented out if bi-linear interpolation is applied.
 		if(! calcPlaneEquation(vertices, polygon)) {
-			//console.log("Skip plane(polygon) is perpendicular to the screen / xy-plane, color: " + color.name);
+			console.log("Skip plane(polygon) is perpendicular to the screen / xy-plane, color: " + color.name);
 			return;
 		}
 
@@ -296,10 +296,10 @@ function(exports, shader, framebuffer, data) {
         }
 
         if (currderivative !== 0) {
-			addIntersection(nextX, nextY, nextZ);;
+			addIntersection(nextX, nextY);;
 
           if (currderivative + lastDerivative === 0) {
-            addIntersection(currX, currY, currZ);;
+            addIntersection(currX, currY);;
           }
         }
         console.log("currderivative:" + currderivative + " lastDerivative " + lastDerivative);
