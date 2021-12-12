@@ -500,6 +500,8 @@ function(exports, shader, framebuffer, data) {
 
 		var horizontalClippingTest;
 		var zTest;
+		var dz;
+		var z;
 
 		// Raster the edges.
 		assembleIntersectionForScanline(vertices, polygon, color, textureCoord, polygonTextureCoord, texture);
