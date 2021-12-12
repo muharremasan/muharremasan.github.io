@@ -128,7 +128,12 @@ define(["exports", "scene"], function(exports, scene) {
 
 		// BEGIN exercise Z-Buffer
 
+		var current = zBuffer[indexZBuf];
 
+		if (current === maxDistance) {
+		   zBuffer[indexZBuf] = z;
+		   return true;
+	}
 		// Z-Buffer pixel starts a frame as undefined.
 		// The first access on a pixel does not need a test.
 
@@ -139,13 +144,22 @@ define(["exports", "scene"], function(exports, scene) {
 
 				// Guess some decent epsilon (which may be >1 despite the name).
 
+			var e = 1
+
+			if (z - current >= e || z - current <= -e) {
+				if (z - current > 0) {
+					zBuffer[indexZBuf] = z;
+					return true;
+				}
+			}
+
 			// The camera is in the origin looking in negative z-direction.
 
 
 		// END exercise Z-Buffer
 
 
-		return true;
+		return false;
 	}
 
 	/**
