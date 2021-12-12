@@ -163,10 +163,12 @@ function(exports, shader, framebuffer, data) {
 				e += dYdXdiff2;
 			  }
 	
-			  framebuffer.set(x, y, getZ(x, y), color);
+			  if (storeIntersectionForScanlineFill && y !== endY) {
+				addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+			  }
 	
-			  if (y !== endY) {
-				addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+			  if (framebuffer.zBufferTest(x, y, z, color)) {
+				framebuffer.set(x, y, z, color, false);
 			  }
 			}
 		  }
