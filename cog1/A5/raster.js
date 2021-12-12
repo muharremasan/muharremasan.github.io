@@ -667,7 +667,7 @@ function(exports, shader, framebuffer, data) {
 		    var zCalc = getZ(x, y);
             
 			D = -(A * x + B * y + C * z);
-
+            zTest;
 		if(Math.abs(z - zCalc) > 0.001) {
 		    console.log("Check failed  z "+z+" = "+zCalc);
 		    console.log("Plane: A=" + A + " B=" + B + " C=" + C + " D=" + D);
