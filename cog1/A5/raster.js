@@ -509,24 +509,10 @@ function(exports, shader, framebuffer, data) {
 		interpolationData.shaderStepOnScanline = shader.getInterpolationStepOnScanlineFunction();
 
 		// BEGIN exercise Scanline
-		for (var y = 0; y < height; y++) {
-			if ((y.length < 2) || (y.length % 2)) {
-			console.log("Error in number of intersection (" + y.length + ") in line: " + y);
+		for (let y = 0; y < height; y++) {
+			if (!scanlineIntersection[y]) {
+			  continue;
 			}
-			if(scanlineIntersection[y] == undefined) {
-				scanlineIntersection[y] = [];
-			}
-			
-            if(horizontalClippingTest) {
-			zTest = framebuffer.zBufferTest(x, y, z, color);}
-
-			if(zTest && horizontalClippingTest) {
-			if(texture != null) {
-			    texture.sample(interpolationData.uvVec, color);
-			}
-		        }
-
-            shadingFunction(color, interpolationData.weightOnScanline);
 
 			scanlineIntersection[y].sort((a, b) => a.x - b.x);
 	
