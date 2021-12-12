@@ -288,7 +288,7 @@ function(exports, shader, framebuffer, data) {
         nextZ = endPoint[2];
 
         drawLineBresenham(currX, currY, currZ, nextX, nextY, nextZ, color, true);
-
+        lastDerivative = currderivative;
         currderivative = calcDerivative(currY, nextY);
 
         if (currderivative === 0) {
@@ -304,7 +304,7 @@ function(exports, shader, framebuffer, data) {
         }
         console.log("currderivative:" + currderivative + " lastDerivative " + lastDerivative);
 		console.log("Add end point:" + nextX + ", " + nextY);
-        lastDerivative = currderivative;
+        currderivative = lastDerivative;
       }
 
 
