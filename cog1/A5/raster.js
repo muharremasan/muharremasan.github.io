@@ -269,7 +269,7 @@ function(exports, shader, framebuffer, data) {
 
         endPoint = vertices[polygon[PolygonVert]];
         lastDerivative = calcDerivative(startPoint[1], endPoint[1]);
-		if (derivative + lastDerivative === 0 && derivative !== 0) {
+		if (currderivative + lastDerivative === 0 && currderivative !== 0) {
 			addIntersection(currX, currY, currZ);
 		  }
         Polygonlen--;
@@ -514,20 +514,19 @@ function(exports, shader, framebuffer, data) {
 		interpolationData.shaderStepOnScanline = shader.getInterpolationStepOnScanlineFunction();
 
 		// BEGIN exercise Scanline
-		for (let y = 0; y < scanlineIntersection.length; y++) {
-			const line = scanlineIntersection[y];
-			if (line) {
-			  if (line.length < 2 || line.length % 2) {
+		for (var y = 0; y < scanlineIntersection.length; y++) {
+			if (liscanlineIntersection[y]) {
+			  if (scanlineIntersection[y].length < 2 || scanlineIntersection[y].length % 2) {
 				continue;
 			  }
 	
-			  line.sort((a, b) => a.x > b.x && 1 || -1);
+			  scanlineIntersection[y].sort((a, b) => a.x > b.x && 1 || -1);
 	
-			  for (let i = 0; i < line.length; i+=2) {
-				z = line[i].z;
-				dz = (line[i + 1].z - line[i].z) / (line[i + 1].x - line[i].x);
+			  for (var i = 0; i < scanlineIntersection[y].length; i+=2) {
+				z = scanlineIntersection[y][i].z;
+				dz = (scanlineIntersection[y][i + 1].z - scanlineIntersection[y][i].z) / (scanlineIntersection[y][i + 1].x - line[i].x);
 	
-				for (let x = line[i].x; x < line[i + 1].x; x++) {
+				for (var x = scanlineIntersection[y][i].x; x < lscanlineIntersection[y][i + 1].x; x++) {
 				  if (framebuffer.zBufferTest(x, y, z, color)) {
 					framebuffer.set(x, y, z, color, false);
 				  }
@@ -539,7 +538,7 @@ function(exports, shader, framebuffer, data) {
 		  }
 		// Fill polygon line by line using the scanline algorithm.
 		// Loop over non empty scan lines.
-
+		scanlineIntersection[y]
 
 			// // Do (or skip) some safety check.
 			// if ((line.length < 2) || (line.length % 2)) {
