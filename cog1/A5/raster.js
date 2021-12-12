@@ -255,52 +255,40 @@ function(exports, shader, framebuffer, data) {
 		// BEGIN exercise Scanline
 		var currderivative = undefined;
 		var lastDerivative = undefined;
+		var Polygonlen = polygon.length -1;
 
-		for (var i = polygon.length - 1; i > 0; i--) {
-			startPoint = polygon[i];
+      while (!lastDerivative && Polygonlen > -1) {
+        startPoint = vertices[polygon[Polygonlen]];
+        var PolygonVert = 0;
 
-			if (i < polygon.length - 1) {
-				endPoint = polygon[i + 1];
-			} else {
-				endPoint = polygon[0];
-			}
-			currY = Math.floor(vertices[startPoint][1]);
-			nextY = Math.floor(vertices[endPoint][1]);
+        if (Polygonlen < polygon.length - 1) {
+			PolygonVert = Polygonlen + 1;
+        }
 
-			if ((currderivative = calcDerivative(currY, nextY)) !== 0) {
-				break;
-			}
-		}
+        endPoint = vertices[polygon[PolygonVert]];
+        lastDerivative = calcDerivative(startPoint[1], endPoint[1]);
+        Polygonlen--;
+      }
 
-		if (currderivative === 0) {
-			return;
-		}
+      if (!lastDerivative) {
+        return;
+      }
 
-		lastIndex = polygon.length - 1;
+      for (var v = 0; v < polygon.length; v++) {
+        startPoint = vertices[polygon[v]];
 
-		for (var i = 0; i < polygon.length; i++) {
-		startPoint = polygon[i];
-		if (i < lastIndex) {
-			endPoint = polygon[i + 1];
-		} else {
-			endPoint = polygon[0];
-		}
-		currX = Math.floor(vertices[startPoint][0]);
-		currY = Math.floor(vertices[startPoint][1]);
-		currZ = vertices[startPoint][2];
+        var nextVertexIndex = v < polygon.length - 1 ? v + 1 : 0;
+        endPoint = vertices[polygon[nextVertexIndex]];
 
-		nextX = Math.floor(vertices[endPoint][0]);
-		nextY = Math.floor(vertices[endPoint][1]);
-		nextZ = vertices[endPoint][2];
-
-		var edgeStartVertexIndex = i;
-		var edgeEndVertexIndex = i < lastIndex ? i + 1 : 0;
-
-		var edgeStartTextureCoord = undefined;
-		var edgeEndTextureCoord = undefined;
+        currX = Math.floor(startPoint[0]);
+        currY = Math.floor(startPoint[1]);
+        currZ = startPoint[2];
+        nextX = Math.floor(endPoint[0]);
+        nextY = Math.floor(endPoint[1]);
+        nextZ = endPoint[2];
 
         drawLineBresenham(currX, currY, currZ, nextX, nextY, nextZ, color, true);
-        lastDerivative = currderivative;
+
         currderivative = calcDerivative(currY, nextY);
 
         if (currderivative === 0) {
@@ -308,15 +296,15 @@ function(exports, shader, framebuffer, data) {
         }
 
         if (currderivative !== 0) {
-			addIntersection(nextX, nextY);;
+			addIntersection(nextX, nextY, nextZ);;
 
           if (currderivative + lastDerivative === 0) {
-            addIntersection(currX, currY);;
+            addIntersection(currX, currY, currZ);;
           }
         }
         console.log("currderivative:" + currderivative + " lastDerivative " + lastDerivative);
 		console.log("Add end point:" + nextX + ", " + nextY);
-        currderivative = lastDerivative;
+        lastDerivative = currderivative;
       }
 
 
