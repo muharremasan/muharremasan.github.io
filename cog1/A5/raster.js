@@ -646,21 +646,13 @@ function(exports, shader, framebuffer, data) {
 		// The result is the distance D of polygon plane to origin.
 
 		// // Check result, applying the plane equation to the original polygon vertices.
-		for(var i = 0; i < polygon.length; i++) {
-		    var p = polygon[i];
-		    var x = vertices[p][0];
-		    var y = vertices[p][1];
-		    var z = vertices[p][2];
-		    var zCalc = getZ(x, y);
-            
-			
+		inverseC = 1 / C;
+		AdivC = A / C;
+		let a1 = vertices[polygon[0]][0];
+		let a2 = vertices[polygon[0]][1];
+		let a3 = vertices[polygon[0]][2];
 
-		if(Math.abs(z - zCalc) > 0.001) {
-			D = -(A * x + B * y + C * z);
-		    console.log("Check failed  z "+z+" = "+zCalc);
-		    console.log("Plane: A=" + A + " B=" + B + " C=" + C + " D=" + D);
-		 }
-		}
+		D = -(A * a1 + B * a2 + C * a3);
 
 		// END exercise Z-Buffer
 
