@@ -660,7 +660,7 @@ function(exports, shader, framebuffer, data) {
 
 		// // Check result, applying the plane equation to the original polygon vertices.
 		for(var i = 0; i < polygon.length; i++) {
-		    var p = polygon[i];
+		    var p = polygon[0][0][0];
 		    var x = vertices[p][0];
 		    var y = vertices[p][1];
 		    var z = vertices[p][2];
