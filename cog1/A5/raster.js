@@ -149,7 +149,9 @@ function(exports, shader, framebuffer, data) {
 			  if (startY !== endY && x !== endX && y !== y1 && y !== startY && y !== endY) {
 				addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
 			  }
-			  framebuffer.set(x, y, getZ(x, y), color);
+			  if (framebuffer.zBufferTest(x, y, z, color)) {
+				framebuffer.set(x, y, z, color, false);
+			  }
 			  y1 = y;
 			}
 		  } else {
