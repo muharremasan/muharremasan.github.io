@@ -515,7 +515,7 @@ function(exports, shader, framebuffer, data) {
 
 		// BEGIN exercise Scanline
 		for (var y = 0; y < scanlineIntersection.length; y++) {
-			if (liscanlineIntersection[y]) {
+			if (scanlineIntersection[y]) {
 			  if (scanlineIntersection[y].length < 2 || scanlineIntersection[y].length % 2) {
 				continue;
 			  }
