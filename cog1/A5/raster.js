@@ -129,17 +129,18 @@ function(exports, shader, framebuffer, data) {
 
 		// BEGIN exercise Bresenham
 		if (startX === endX && startY === endY) {
-			framebuffer.set(startX, startY, startZ, color);
-			return;
+			return framebuffer.set(x, y, z, color);
 		  }
 	
 		  framebuffer.set(x, y, getZ(x, y), color);
 	
 		  if (dXAbs >= dYAbs) {
+			dz = (endZ - startZ) / Math.abs(endX - startX);
 			var y1 = y - dYSign;
 			e = dXAbs - dYAbs2;
 			while (x !== endX) {
 			  x += dXSign;
+			  z += dz;
 			  if (e > 0) {
 				e = e - dYAbs2;
 			  } else {
@@ -147,7 +148,7 @@ function(exports, shader, framebuffer, data) {
 				e += dXdYdiff2;
 			  }
 			  if (startY !== endY && x !== endX && y !== y1 && y !== startY && y !== endY) {
-				addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+				addIntersection(x, y, z, interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
 			  }
 			  if (framebuffer.zBufferTest(x, y, z, color)) {
 				framebuffer.set(x, y, z, color, false);
@@ -155,9 +156,11 @@ function(exports, shader, framebuffer, data) {
 			  y1 = y;
 			}
 		  } else {
+			dz = (endZ - startZ) / Math.abs(endY - startY);
 			e = dYAbs - dXAbs2;
 			while (y !== endY) {
 			  y += dYSign;
+			  z += dz;
 			  if (e > 0) {
 				e = e - dXAbs2;
 			  } else {
