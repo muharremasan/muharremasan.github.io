@@ -527,7 +527,6 @@ function(exports, shader, framebuffer, data) {
 		        }
 
             shadingFunction(color, interpolationData.weightOnScanline);
-			interpolationStepOnScanline(texture);
 
 			scanlineIntersection[y].sort((a, b) => a.x - b.x);
 	
@@ -536,7 +535,9 @@ function(exports, shader, framebuffer, data) {
 			  const x2 = scanlineIntersection[y][i + 1];
 	
 			  for (var x = x1.x; x <= x2.x; x++) {
+				var z = getZ(x, y);
 				framebuffer.set(x, y, getZ(x, y), color);
+				interpolationStepOnScanline(texture);
 			  }
 			}
 		  }
@@ -660,10 +661,10 @@ function(exports, shader, framebuffer, data) {
 
 		// // Check result, applying the plane equation to the original polygon vertices.
 		for(var i = 0; i < polygon.length; i++) {
-		   
-		    var x = vertices[polygon[0]][0];
-		    var y = vertices[polygon[0]][1];
-		    var z = vertices[polygon[0]][2];
+		    var p = polygon[i];
+		    var x = vertices[p][0];
+		    var y = vertices[p][1];
+		    var z = vertices[p][2];
 		    var zCalc = getZ(x, y);
 
 			inverseC = 1 / C;
