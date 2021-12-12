@@ -256,7 +256,7 @@ function(exports, shader, framebuffer, data) {
 		var currderivative = undefined;
 		var lastDerivative = undefined;
 
-		for (let i = polygon.length - 1; i > 0; i--) {
+		for (var i = polygon.length - 1; i > 0; i--) {
 			startPoint = polygon[i];
 
 			if (i < polygon.length - 1) {
@@ -278,6 +278,7 @@ function(exports, shader, framebuffer, data) {
 
 		lastIndex = polygon.length - 1;
 
+		for (var i = 0; i < polygon.length; i++) {
 		startPoint = polygon[i];
 		if (i < lastIndex) {
 			endPoint = polygon[i + 1];
