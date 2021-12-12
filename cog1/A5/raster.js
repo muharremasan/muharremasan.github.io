@@ -653,26 +653,26 @@ function(exports, shader, framebuffer, data) {
 
 		// START exercise Z-Buffer
 
-    //    var zTest = framebuffer.zBufferTest(x, y, z);
+       var zTest = framebuffer.zBufferTest(x, y, z);
 
-	// 	// Project first vertex (could be any) on normal.
-	// 	// The result is the distance D of polygon plane to origin.
+		// Project first vertex (could be any) on normal.
+		// The result is the distance D of polygon plane to origin.
 
-	// 	// // Check result, applying the plane equation to the original polygon vertices.
-	// 	for(var i = 0; i < polygon.length; i++) {
-	// 	    var p = polygon[i];
-	// 	    var x = vertices[p][0];
-	// 	    var y = vertices[p][1];
-	// 	    var z = vertices[p][2];
-	// 	    var zCalc = getZ(x, y);
+		// // Check result, applying the plane equation to the original polygon vertices.
+		for(var i = 0; i < polygon.length; i++) {
+		    var p = polygon[i];
+		    var x = vertices[p][0];
+		    var y = vertices[p][1];
+		    var z = vertices[p][2];
+		    var zCalc = getZ(x, y);
             
-	// 		D = -(A * x + B * y + C * z);
-    //         zTest;
-	// 	if(Math.abs(z - zCalc) > 0.001) {
-	// 	    console.log("Check failed  z "+z+" = "+zCalc);
-	// 	    console.log("Plane: A=" + A + " B=" + B + " C=" + C + " D=" + D);
-	// 	 }
-	// 	}
+			D = -(A * x + B * y + C * z);
+            zTest;
+		if(Math.abs(z - zCalc) > 0.001) {
+		    console.log("Check failed  z "+z+" = "+zCalc);
+		    console.log("Plane: A=" + A + " B=" + B + " C=" + C + " D=" + D);
+		 }
+		}
 
 		// END exercise Z-Buffer
 
