@@ -514,31 +514,19 @@ function(exports, shader, framebuffer, data) {
 		interpolationData.shaderStepOnScanline = shader.getInterpolationStepOnScanlineFunction();
 
 		// BEGIN exercise Scanline
-		for (var y = 0; y < scanlineIntersection.length; y++) {
-			if (scanlineIntersection[y]) {
-			  if (scanlineIntersection[y].length < 2 || scanlineIntersection[y].length % 2) {
-				continue;
-			  }
-	
-			  scanlineIntersection[y].sort((a, b) => a.x > b.x && 1 || -1);
-	
-			  for (var i = 0; i < scanlineIntersection[y].length; i+=2) {
-				z = scanlineIntersection[y][i].z;
-				dz = (scanlineIntersection[y][i + 1].z - scanlineIntersection[y][i].z) / (scanlineIntersection[y][i + 1].x - line[i].x);
-	
-				for (var x = scanlineIntersection[y][i].x; x < lscanlineIntersection[y][i + 1].x; x++) {
-				  if (framebuffer.zBufferTest(x, y, z, color)) {
-					framebuffer.set(x, y, z, color, false);
-				  }
-				  z += dz;
-				  interpolationStepOnScanline(texture);
-				}
-			  }
-			}
-		  }
+		scanlineIntersection.forEach((line, y) => {
+		for (var i = 0; i < line.length - 1; i += 2) {
+			var intersection1 = line[i];
+				var intersection2 = line[i + 1];
+		for (var x = intersection1.x; x <= intersection2.x; x++) {
+			var z = getZ(x, y);
+			framebuffer.set(x, y, z, color);
+			interpolationStepOnScanline(texture)
+		   }
+		 }
+		});
 		// Fill polygon line by line using the scanline algorithm.
 		// Loop over non empty scan lines.
-		scanlineIntersection[y]
 
 			// // Do (or skip) some safety check.
 			// if ((line.length < 2) || (line.length % 2)) {
