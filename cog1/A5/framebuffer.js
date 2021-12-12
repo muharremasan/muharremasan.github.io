@@ -182,7 +182,7 @@ define(["exports", "scene"], function(exports, scene) {
 			return;
 		}
 
-		if(doZBufferTest == undefined || doZBufferTest == true) {
+		if(doZBufferTest == undefined || doZBufferTest == false) {
 			// Perform zBuffer-test (default).
 			if(! zBufferTest(x, y, z, color)) {
 				return;
