@@ -128,10 +128,10 @@ define(["exports", "scene"], function(exports, scene) {
 
 		// BEGIN exercise Z-Buffer
 
-		var current = zBuffer[indexZBuf];
+		var current = zBuf[indexZBuf];
 
 		if (current === maxDistance) {
-		   zBuffer[indexZBuf] = z;
+			zBuf[indexZBuf] = z;
 		   return true;
 	}
 		// Z-Buffer pixel starts a frame as undefined.
