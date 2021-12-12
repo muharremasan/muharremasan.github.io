@@ -147,7 +147,7 @@ define(["exports", "scene"], function(exports, scene) {
 
 			if (z - current >= e || z - current <= -e) {
 				if (z - current > 0) {
-					zBuffer[indexZBuf] = z;
+					zBuf[indexZBuf] = z;
 					return true;
 				}
 			}
