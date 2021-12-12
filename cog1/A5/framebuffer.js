@@ -143,15 +143,6 @@ define(["exports", "scene"], function(exports, scene) {
 
 				// Guess some decent epsilon (which may be >1 despite the name).
 
-			var e = 1
-
-			if (z - current >= e || z - current <= -e) {
-				if (z - current > 0) {
-					zBuf[indexZBuf] = z;
-					return true;
-				}
-			}
-
 			// The camera is in the origin looking in negative z-direction.
 
 
