@@ -116,7 +116,6 @@ define(["exports", "scene"], function(exports, scene) {
 			resetZBuffer[i] = maxDistance;
 		}
 	}
-
 	/**
 	 * Perform zBuffer test.
 	 * @parameter color is an object-array with rgba values
