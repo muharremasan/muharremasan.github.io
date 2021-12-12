@@ -130,7 +130,7 @@ define(["exports", "scene"], function(exports, scene) {
 
 		var current = zBuf[indexZBuf];
 
-		if (current === maxDistance) {
+		if (z - current > 0.1 || current === undefined) {
 			zBuf[indexZBuf] = z;
 		   return true;
 	}
