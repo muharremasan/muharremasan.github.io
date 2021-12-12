@@ -38,7 +38,7 @@ function(exports, dojo, domStyle, app, scenegraph, createScene, animation, raste
 	// Set when triangulation is toggled.
 	var dataIsTriangulated = triangulateDataOnInit;
 	// Use textures defined in model data.
-	var texturing = true;
+	var texturing = false;
 
 	// Font for info on canvas (not in GUI) .
 	var fontsizeInPt = 10;
