@@ -653,7 +653,7 @@ function(exports, shader, framebuffer, data) {
 
 		// START exercise Z-Buffer
 
-        //zTest = framebuffer.zBufferTest(x, y, z, color);
+        zTest = framebuffer.zBufferTest(x, y, z, color);
 
 		// Project first vertex (could be any) on normal.
 		// The result is the distance D of polygon plane to origin.
