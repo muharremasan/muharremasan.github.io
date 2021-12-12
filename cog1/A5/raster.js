@@ -669,7 +669,7 @@ function(exports, shader, framebuffer, data) {
 			inverseC = 1 / C;
 		    AdivC = A / C;
 
-			D = -(A * a1 + B * a2 + C * a3);
+			D = -(A * x + B * y + C * z);
 
 		if(Math.abs(z - zCalc) > 0.001) {
 		    console.log("Check failed  z "+z+" = "+zCalc);
