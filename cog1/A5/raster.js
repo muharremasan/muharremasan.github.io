@@ -269,6 +269,9 @@ function(exports, shader, framebuffer, data) {
 
         endPoint = vertices[polygon[PolygonVert]];
         lastDerivative = calcDerivative(startPoint[1], endPoint[1]);
+		if (derivative + lastDerivative === 0 && derivative !== 0) {
+			addIntersection(currX, currY, currZ);
+		  }
         Polygonlen--;
       }
 
