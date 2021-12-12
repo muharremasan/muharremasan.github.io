@@ -514,21 +514,26 @@ function(exports, shader, framebuffer, data) {
 		interpolationData.shaderStepOnScanline = shader.getInterpolationStepOnScanlineFunction();
 
 		// BEGIN exercise Scanline
-		for (let y = 0; y < height; y++) {
-			if (!scanlineIntersection[y]) {
-			  continue;
-			}
-
-			scanlineIntersection[y].sort((a, b) => a.x - b.x);
+		for (let y = 0; y < scanlineIntersection.length; y++) {
+			const line = scanlineIntersection[y];
+			if (line) {
+			  if (line.length < 2 || line.length % 2) {
+				continue;
+			  }
 	
-			for (var i = 0; i < scanlineIntersection[y].length - 1; i += 2) {
-			  const x1 = scanlineIntersection[y][i];
-			  const x2 = scanlineIntersection[y][i + 1];
+			  line.sort((a, b) => a.x > b.x && 1 || -1);
 	
-			  for (var x = x1.x; x <= x2.x; x++) {
-				var z = getZ(x, y);
-				framebuffer.set(x, y, getZ(x, y), color);
-				interpolationStepOnScanline(texture);
+			  for (let i = 0; i < line.length; i+=2) {
+				z = line[i].z;
+				dz = (line[i + 1].z - line[i].z) / (line[i + 1].x - line[i].x);
+	
+				for (let x = line[i].x; x < line[i + 1].x; x++) {
+				  if (framebuffer.zBufferTest(x, y, z, color)) {
+					framebuffer.set(x, y, z, color, false);
+				  }
+				  z += dz;
+				  interpolationStepOnScanline(texture);
+				}
 			  }
 			}
 		  }
