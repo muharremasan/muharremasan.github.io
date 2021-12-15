@@ -263,12 +263,12 @@ define(["exports", "shader"], function(exports, shader) {
 			// Include shearing.
 			// Modify the matrix this.localShear (see mat4.translate for matrix data structure).
 			mat4.identity(this.localShear);
-			this.localShear[1] = this.transformation.shear[0];
-			this.localShear[2] = this.transformation.shear[0];
+			this.localShear[1] = this.transformation.shear[1];
+			this.localShear[2] = this.transformation.shear[1];
 			this.localShear[4] = this.transformation.shear[0];
 			this.localShear[6] = this.transformation.shear[0];
-			this.localShear[8] = this.transformation.shear[0];
-			this.localShear[9] = this.transformation.shear[0];
+			this.localShear[8] = this.transformation.shear[2];
+			this.localShear[9] = this.transformation.shear[2];
 			mat4.multiply(this.localModelview, this.localShear);
 			// END exercise Shear
 
