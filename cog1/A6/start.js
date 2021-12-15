@@ -13,7 +13,7 @@
 	  cacheBust: new Date(),
 	  waitSeconds: 5,
 	  paths: {
-		"cog1": "/cog1/A5"
+		"cog1": "/cog1/A6"
 	  },
 	  aliases: [
 		["app", "cog1/app"],
